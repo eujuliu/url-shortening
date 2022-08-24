@@ -15,11 +15,15 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1440px;
+  max-width: 1200px;
   position: relative;
 
   padding: 3.8rem 1.8rem 2.4rem;
   width: 100%;
+
+  @media screen and (min-width: 860px) {
+    padding: 4rem 2rem;
+  }
 `;
 
 export const Hamburger = styled.button`
@@ -51,8 +55,19 @@ export const NavigationMenu = styled.nav<NavBarProps>`
     li {
       list-style-type: none;
       text-align: center;
+      font-weight: 700;
       color: #fff;
       margin: 1rem;
+
+      a {
+        color: ${(props) => props.theme.colors.neutral.grayishViolet};
+        text-decoration: none;
+        transition: color 500ms;
+
+        &:hover {
+          color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
+        }
+      }
 
       button {
         width: 100%;
@@ -81,6 +96,8 @@ export const NavigationMenu = styled.nav<NavBarProps>`
     top: 0;
     left: 0;
     background-color: #fff;
+    padding: 0;
+    margin-left: 2rem;
 
     ul {
       justify-content: center;
@@ -117,16 +134,21 @@ export const Main = styled.main`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 1440px;
 `;
 
 export const MainFirstContent = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-
   padding-bottom: 20rem;
+  width: 100%;
+  max-width: 1200px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
   h1 {
     color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
@@ -134,29 +156,96 @@ export const MainFirstContent = styled.div`
     font-size: 4.2rem;
     line-height: 1.2;
     margin-top: 6rem;
+    max-width: 690px;
   }
 
   p {
     color: ${(props) => props.theme.colors.neutral.grayishViolet};
     text-align: center;
-    width: 30rem;
+    max-width: 500px;
     margin: 1.6rem 0;
+  }
+
+  @media screen and (min-width: 860px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    padding-bottom: 20rem;
+
+    svg {
+      order: 2;
+      width: 520px;
+      position: absolute;
+      right: 0px;
+    }
+
+    div {
+      align-items: flex-start;
+    }
+
+    h1 {
+      font-size: 8rem;
+    }
+
+    h1,
+    p {
+      text-align: left;
+    }
+  }
+`;
+
+export const AdvancedStatistics = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f0f1f6;
+  width: 100%;
+  padding: 20rem 0 7rem;
+  position: relative;
+
+  & > h1 {
+    font-size: 3rem;
+  }
+
+  & > p {
+    color: ${(props) => props.theme.colors.neutral.grayishViolet};
+    text-align: center;
+    margin: 2rem 0 9rem;
+    width: 90%;
+    max-width: 540px;
+  }
+
+  @media screen and (min-width: 860px) {
+    padding: 20rem 2rem;
+    padding-bottom: 30rem;
+    & > h1 {
+      font-size: 4rem;
+    }
+
+    .advanced-statistics-list-container {
+      display: flex;
+    }
   }
 `;
 
 export const ShortenLinkForm = styled.form`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   position: absolute;
-  bottom: -23rem;
+  top: -80px;
+  max-width: 1200px;
 
   background: top right / 70% no-repeat url("/bg-shorten-mobile.svg"),
     ${(props) => props.theme.colors.primary.darkViolet};
   width: 90%;
   border-radius: 1rem;
   padding: 2.5rem;
+
+  div {
+    width: 100%;
+  }
 
   .input {
     border: none;
@@ -182,6 +271,7 @@ export const ShortenLinkForm = styled.form`
 
   button {
     width: 100%;
+    max-height: 5rem;
     font-weight: 700;
     background-color: ${(props) => props.theme.colors.primary.cyan};
     border-radius: 0.5rem;
@@ -195,25 +285,19 @@ export const ShortenLinkForm = styled.form`
       opacity: 0.8;
     }
   }
-`;
 
-export const AdvancedStatistics = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #f0f1f6;
-  padding: 20rem 0 7rem;
+  @media screen and (min-width: 860px) {
+    background: center / cover no-repeat url("/bg-shorten-desktop.svg"),
+      ${(props) => props.theme.colors.primary.darkViolet};
+    flex-direction: row;
+    padding: 5rem 8rem;
+    width: 97%;
 
-  & > h1 {
-    font-size: 3rem;
-  }
-
-  & > p {
-    color: ${(props) => props.theme.colors.neutral.grayishViolet};
-    text-align: center;
-    margin: 2rem 0 9rem;
-    width: 90%;
+    button {
+      margin: 0;
+      width: 20%;
+      margin-left: 2rem;
+    }
   }
 `;
 
@@ -233,17 +317,48 @@ export const BoostContainer = styled.div`
     color: #fff;
     font-size: 2.5rem;
   }
+
+  @media screen and (min-width: 860px) {
+    background: center / cover no-repeat url("/bg-boost-desktop.svg"),
+      ${(props) => props.theme.colors.primary.darkViolet};
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
 `;
 
 export const Footer = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
   background-color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
   width: 100%;
   padding: 4rem 0;
+
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  @media screen and (min-width: 860px) {
+    .footer-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0 2rem;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-grow: 1;
+      max-width: 800px;
+    }
+  }
 `;
 
 export const SocialList = styled.ul`
@@ -255,5 +370,18 @@ export const SocialList = styled.ul`
   li {
     margin: 0 1rem;
     list-style-type: none;
+
+    a {
+      color: #fff;
+      transition: color 500ms;
+    }
+
+    a:hover {
+      color: ${(props) => props.theme.colors.primary.cyan};
+    }
+  }
+
+  @media screen and (min-width: 860px) {
+    margin-top: 0;
   }
 `;

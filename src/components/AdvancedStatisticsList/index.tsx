@@ -11,6 +11,7 @@ interface AdvancedStatisticsListProps {
     Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
     title: string;
     text: string;
+    topPosition: string;
   }[];
 }
 
@@ -19,10 +20,10 @@ const AdvancedStatisticsList: NextPage<AdvancedStatisticsListProps> = ({
 }) => {
   return (
     <>
-      {data.map(({ Icon, title, text }) => {
+      {data.map(({ Icon, title, text, topPosition }) => {
         return (
           <AdvancedStatisticsContainer key={title}>
-            <AdvancedStatisticsSection>
+            <AdvancedStatisticsSection topPosition={topPosition}>
               <div>
                 <Icon fontSize={40} />
               </div>

@@ -27,7 +27,22 @@ export const FooterMenuListContainer = styled.div`
       a {
         color: ${(props) => props.theme.colors.neutral.gray};
         text-decoration: none;
+
+        transition: color 500ms;
+
+        &:hover {
+          color: ${(props) => props.theme.colors.primary.cyan};
+        }
       }
+    }
+  }
+
+  @media screen and (min-width: 860px) {
+    h1 {
+      margin: 0 0 2rem;
+    }
+    ul {
+      align-items: flex-start;
     }
   }
 `;

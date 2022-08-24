@@ -1,17 +1,17 @@
 import type { NextPage } from "next";
-import { FunctionComponent, SVGProps, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 
 import Logo from "@/assets/images/logo.svg";
 import MenuIcon from "@/assets/images/icon-menu.svg";
 import IllustrationWorking from "@/assets/images/illustration-working.svg";
-import BrandRecognition from "@/assets/images/icon-brand-recognition.svg";
-import DetailedRecords from "@/assets/images/icon-detailed-records.svg";
-import FullyCustomizable from "@/assets/images/icon-fully-customizable.svg";
+
 import FacebookLogo from "@/assets/images/icon-facebook.svg";
 import TwitterLogo from "@/assets/images/icon-twitter.svg";
 import PinterestLogo from "@/assets/images/icon-pinterest.svg";
 import InstagramLogo from "@/assets/images/icon-instagram.svg";
+
+import { advancedStatisticsData, footerNavLinksData } from "@/dataList/data";
 
 import {
   AdvancedStatistics,
@@ -31,12 +31,15 @@ import Button from "@/components/Button";
 import AdvancedStatisticsList from "@/components/AdvancedStatisticsList";
 import FooterMenuList from "@/components/FooterMenuList";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Link from "next/link";
 
 interface InputProps {
   link: string;
 }
 
 const Home: NextPage = () => {
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [windowSize, setWindowSize] = useState(0);
   const {
     register,
     handleSubmit,
@@ -44,58 +47,6 @@ const Home: NextPage = () => {
     formState: { errors },
   } = useForm<InputProps>();
   const onSubmit: SubmitHandler<InputProps> = (data) => console.log(data);
-  const [isNavExpanded, setIsNavExpanded] = useState(false);
-  const [windowSize, setWindowSize] = useState(0);
-
-  const advancedStatisticsData: {
-    Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
-    title: string;
-    text: string;
-  }[] = [
-    {
-      Icon: BrandRecognition,
-      title: "Brand Recognition",
-      text: "Boost your brand recognition with each click. Generic links don&apos;t mean a thing. Branded links help instil confidence in your content",
-    },
-    {
-      Icon: DetailedRecords,
-      title: "Detailed Records",
-      text: "Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.",
-    },
-    {
-      Icon: FullyCustomizable,
-      title: "Fully Customizable",
-      text: "Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.",
-    },
-  ];
-
-  const footerNavLinksData = [
-    {
-      title: "Features",
-      items: [
-        { item: "Link Shortening", link: "https://www.google.com/" },
-        { item: "Branded Links", link: "https://www.google.com/" },
-        { item: "Analytics", link: "https://www.google.com/" },
-      ],
-    },
-    {
-      title: "Resources",
-      items: [
-        { item: "Blog", link: "https://www.google.com" },
-        { item: "Developers", link: "https://www.google.com" },
-        { item: "Support", link: "https://www.google.com" },
-      ],
-    },
-    {
-      title: "Company",
-      items: [
-        { item: "About", link: "https://www.google.com" },
-        { item: "Our Team", link: "https://www.google.com" },
-        { item: "Careers", link: "https://www.google.com" },
-        { item: "Contact", link: "https://www.google.com" },
-      ],
-    },
-  ];
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -120,9 +71,21 @@ const Home: NextPage = () => {
 
         <NavigationMenu isHidden={isNavExpanded || windowSize > 860}>
           <ul>
-            <li>Features</li>
-            <li>Pricing</li>
-            <li>Resources</li>
+            <li>
+              <Link href="/">
+                <a>Features</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>Pricing</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <a>Resources</a>
+              </Link>
+            </li>
           </ul>
           <Divider />
           <ul>
@@ -143,34 +106,41 @@ const Home: NextPage = () => {
             width="100%"
             viewBox="0 0 520 482"
           />
-          <h1>More than just shorter links</h1>
-          <p>
-            Build your brand&apos;s recognition and get detailed insights on how
-            your links are performing.
-          </p>
-          <Button>Get Started</Button>
+          <div>
+            <h1>More than just shorter links</h1>
+            <p>
+              Build your brand&apos;s recognition and get detailed insights on
+              how your links are performing.
+            </p>
+            <Button>Get Started</Button>
+          </div>
         </MainFirstContent>
-        <ShortenLinkForm onSubmit={handleSubmit(onSubmit)}>
-          <input
-            className={
-              errors.link && getValues.length > 0
-                ? "input input-with-error"
-                : "input"
-            }
-            type="text"
-            placeholder="Shorter a link here..."
-            {...register("link", { required: true })}
-          />
-          {errors.link && <p>Please add a link</p>}
-          <button type="submit">Shorten It!</button>
-        </ShortenLinkForm>
         <AdvancedStatistics>
+          <ShortenLinkForm onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <input
+                className={
+                  errors.link && getValues.length > 0
+                    ? "input input-with-error"
+                    : "input"
+                }
+                type="text"
+                placeholder="Shorter a link here..."
+                {...register("link", { required: true })}
+              />
+              {errors.link && <p>Please add a link</p>}
+            </div>
+            <button type="submit">Shorten It!</button>
+          </ShortenLinkForm>
+
           <h1>Advanced Statistics</h1>
           <p>
             Track how your links are performing across the web with our advanced
             statistics dashboard.
           </p>
-          <AdvancedStatisticsList data={advancedStatisticsData} />
+          <div className="advanced-statistics-list-container">
+            <AdvancedStatisticsList data={advancedStatisticsData} />
+          </div>
         </AdvancedStatistics>
         <BoostContainer>
           <h1>Boost your links today</h1>
@@ -178,22 +148,42 @@ const Home: NextPage = () => {
         </BoostContainer>
       </Main>
       <Footer>
-        <Logo fontSize={100} height={35} style={{ color: "#fff" }} />
-        <FooterMenuList data={footerNavLinksData} />
-        <SocialList>
-          <li>
-            <FacebookLogo fontSize={24} />
-          </li>
-          <li>
-            <TwitterLogo fontSize={24} />
-          </li>
-          <li>
-            <PinterestLogo fontSize={24} />
-          </li>
-          <li>
-            <InstagramLogo fontSize={24} />
-          </li>
-        </SocialList>
+        <div className="footer-container">
+          <Logo fontSize={100} height={35} style={{ color: "#fff" }} />
+          <div>
+            <FooterMenuList data={footerNavLinksData} />
+            <SocialList>
+              <li>
+                <Link href="/">
+                  <a>
+                    <FacebookLogo fontSize={24} />
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/">
+                  <a>
+                    <TwitterLogo fontSize={24} />
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/">
+                  <a>
+                    <PinterestLogo fontSize={24} />
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/">
+                  <a>
+                    <InstagramLogo fontSize={24} />
+                  </a>
+                </Link>
+              </li>
+            </SocialList>
+          </div>
+        </div>
       </Footer>
     </Container>
   );

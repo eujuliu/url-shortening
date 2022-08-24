@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font: 500 18px/1.5 "Poppins", sans-serif;
+    font: 500 1.8rem/1.5 "Poppins", sans-serif;
     color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
     -webkit-font-smoothing: antialiased;
   }
@@ -29,6 +29,7 @@ export const GlobalStyles = createGlobalStyle`
 
   button {
     border: none;
+    cursor: pointer;
   }
 
   p, h1, h2, h3, h4, h5, h6 {
