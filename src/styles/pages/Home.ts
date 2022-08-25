@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-interface NavBarProps {
-  isHidden: boolean;
-}
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  max-width: 2560px;
+  margin: auto;
+
+  @media screen and (min-width: 2560px) {
+    zoom: 150%;
+  }
 `;
 
 export const Header = styled.header`
@@ -22,7 +25,8 @@ export const Header = styled.header`
   width: 100%;
 
   @media screen and (min-width: 860px) {
-    padding: 4rem 2rem;
+    width: 97%;
+    padding: 4rem 0;
   }
 `;
 
@@ -31,97 +35,6 @@ export const Hamburger = styled.button`
   font-size: 0;
   border: none;
   cursor: pointer;
-
-  @media screen and (min-width: 860px) {
-    display: none;
-  }
-`;
-
-export const NavigationMenu = styled.nav<NavBarProps>`
-  display: ${(props) => (props.isHidden ? "inline" : "none")};
-  position: absolute;
-  top: 10rem;
-  left: 5%;
-  background-color: ${(props) => props.theme.colors.primary.darkViolet};
-  border-radius: 1rem;
-  padding: 1rem 3rem;
-  width: 90%;
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 0;
-
-    li {
-      list-style-type: none;
-      text-align: center;
-      font-weight: 700;
-      color: #fff;
-      margin: 1rem;
-
-      a {
-        color: ${(props) => props.theme.colors.neutral.grayishViolet};
-        text-decoration: none;
-        transition: color 500ms;
-
-        &:hover {
-          color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
-        }
-      }
-
-      button {
-        width: 100%;
-        padding: 1rem;
-        background-color: transparent;
-
-        border-radius: 10rem;
-        color: #fff;
-      }
-      .button-with-cyan-background {
-        color: #fff;
-        background-color: ${(props) => props.theme.colors.primary.cyan};
-        transition: opacity 400ms;
-
-        &:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-  }
-
-  @media screen and (min-width: 860px) {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    padding: 0;
-    margin-left: 2rem;
-
-    ul {
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      padding: 0;
-
-      li {
-        color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
-        width: 100%;
-
-        button {
-          color: #000;
-          width: 110px;
-        }
-      }
-    }
-  }
-`;
-
-export const Divider = styled.div`
-  width: 100%;
-  height: 1px;
-  background-color: ${(props) => props.theme.colors.neutral.grayishViolet};
 
   @media screen and (min-width: 860px) {
     display: none;
@@ -141,7 +54,7 @@ export const MainFirstContent = styled.div`
   flex-direction: column;
   padding-bottom: 20rem;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
 
   div {
     display: flex;
@@ -169,23 +82,23 @@ export const MainFirstContent = styled.div`
   @media screen and (min-width: 860px) {
     width: 100%;
     flex-direction: row;
-    justify-content: flex-start;
-    padding: 0 2rem;
-    padding-bottom: 20rem;
+    justify-content: center;
+    padding: 0 2rem 20rem;
+    background: top right / 600px no-repeat url("/bg-illustration-working.svg");
 
     svg {
-      order: 2;
-      width: 520px;
-      position: absolute;
-      right: 0px;
+      display: none;
     }
 
     div {
+      width: 100%;
+      max-width: 1200px;
       align-items: flex-start;
     }
 
     h1 {
       font-size: 8rem;
+      margin-top: 0;
     }
 
     h1,
@@ -200,7 +113,7 @@ export const AdvancedStatistics = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #f0f1f6;
+  background-color: ${(props) => props.theme.colors.neutral.lightGray};
   width: 100%;
   padding: 20rem 0 7rem;
   position: relative;
@@ -230,77 +143,6 @@ export const AdvancedStatistics = styled.div`
   }
 `;
 
-export const ShortenLinkForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: -80px;
-  max-width: 1200px;
-
-  background: top right / 70% no-repeat url("/bg-shorten-mobile.svg"),
-    ${(props) => props.theme.colors.primary.darkViolet};
-  width: 90%;
-  border-radius: 1rem;
-  padding: 2.5rem;
-
-  div {
-    width: 100%;
-  }
-
-  .input {
-    border: none;
-    width: 100%;
-    border-radius: 0.5rem;
-    padding: 1rem 1.4rem;
-    color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
-  }
-
-  .input-with-error {
-    border: 2px solid ${(props) => props.theme.colors.secondary.red};
-    outline-color: ${(props) => props.theme.colors.secondary.red};
-  }
-
-  p {
-    color: ${(props) => props.theme.colors.secondary.red};
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 500;
-    width: 100%;
-    margin-top: 0.4rem;
-  }
-
-  button {
-    width: 100%;
-    max-height: 5rem;
-    font-weight: 700;
-    background-color: ${(props) => props.theme.colors.primary.cyan};
-    border-radius: 0.5rem;
-    padding: 1rem 1.4rem;
-    color: #fff;
-    margin-top: 2rem;
-
-    transition: opacity 400ms;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-
-  @media screen and (min-width: 860px) {
-    background: center / cover no-repeat url("/bg-shorten-desktop.svg"),
-      ${(props) => props.theme.colors.primary.darkViolet};
-    flex-direction: row;
-    padding: 5rem 8rem;
-    width: 97%;
-
-    button {
-      margin: 0;
-      width: 20%;
-      margin-left: 2rem;
-    }
-  }
-`;
-
 export const BoostContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -314,7 +156,7 @@ export const BoostContainer = styled.div`
     ${(props) => props.theme.colors.primary.darkViolet};
 
   h1 {
-    color: #fff;
+    color: ${(props) => props.theme.colors.neutral.white};
     font-size: 2.5rem;
   }
 
@@ -358,30 +200,5 @@ export const Footer = styled.footer`
       flex-grow: 1;
       max-width: 800px;
     }
-  }
-`;
-
-export const SocialList = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 4rem;
-
-  li {
-    margin: 0 1rem;
-    list-style-type: none;
-
-    a {
-      color: #fff;
-      transition: color 500ms;
-    }
-
-    a:hover {
-      color: ${(props) => props.theme.colors.primary.cyan};
-    }
-  }
-
-  @media screen and (min-width: 860px) {
-    margin-top: 0;
   }
 `;

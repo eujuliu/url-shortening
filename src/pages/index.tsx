@@ -1,52 +1,42 @@
-import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
+import nookies from "nookies";
 
 import Logo from "@/assets/images/logo.svg";
 import MenuIcon from "@/assets/images/icon-menu.svg";
 import IllustrationWorking from "@/assets/images/illustration-working.svg";
 
-import FacebookLogo from "@/assets/images/icon-facebook.svg";
-import TwitterLogo from "@/assets/images/icon-twitter.svg";
-import PinterestLogo from "@/assets/images/icon-pinterest.svg";
-import InstagramLogo from "@/assets/images/icon-instagram.svg";
-
-import { advancedStatisticsData, footerNavLinksData } from "@/dataList/data";
+import Button from "@/components/Button";
+import AdvancedStatisticsList from "@/components/AdvancedStatisticsList";
+import FooterMenuList from "@/components/FooterMenuList";
+import SocialList from "@/components/SocialList";
+import ShortenLinkForm from "@/components/ShortenLinkForm";
+import NavigationMenu from "@/components/NavigationMenu";
+import SavedLinksList from "@/components/SavedLinksList";
 
 import {
   AdvancedStatistics,
   BoostContainer,
   Container,
-  Divider,
   Footer,
   Header,
   Main,
   MainFirstContent,
   Hamburger,
-  NavigationMenu,
-  ShortenLinkForm,
-  SocialList,
 } from "@/styles/pages/Home";
-import Button from "@/components/Button";
-import AdvancedStatisticsList from "@/components/AdvancedStatisticsList";
-import FooterMenuList from "@/components/FooterMenuList";
-import { SubmitHandler, useForm } from "react-hook-form";
-import Link from "next/link";
+import { advancedStatistics } from "@/data/advanced-statistics";
+import { footerNavLinks } from "@/data/footer-nav-links";
 
-interface InputProps {
-  link: string;
+interface HomeProps {
+  SAVED_LINKS: { original: string; short: string }[];
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const [windowSize, setWindowSize] = useState(0);
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-  } = useForm<InputProps>();
-  const onSubmit: SubmitHandler<InputProps> = (data) => console.log(data);
+  const [savedLinks, setSavedLinks] =
+    useState<{ original: string; short: string }[]>(SAVED_LINKS);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -63,45 +53,16 @@ const Home: NextPage = () => {
       </Head>
 
       <Header>
-        <Logo fontSize={135} height={35} fill="#34313D" />
+        <Logo fontSize={135} height={35} />
 
         <Hamburger onClick={() => setIsNavExpanded(!isNavExpanded)}>
           <MenuIcon fontSize={35} />
         </Hamburger>
-
-        <NavigationMenu isHidden={isNavExpanded || windowSize > 860}>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>Features</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a>Pricing</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/">
-                <a>Resources</a>
-              </Link>
-            </li>
-          </ul>
-          <Divider />
-          <ul>
-            <li>
-              <button>Login</button>
-            </li>
-            <li>
-              <button className="button-with-cyan-background">Sign Up</button>
-            </li>
-          </ul>
-        </NavigationMenu>
+        <NavigationMenu isHidden={isNavExpanded || windowSize > 860} />
       </Header>
       <Main>
         <MainFirstContent>
           <IllustrationWorking
-            className="illustration-working"
             fontSize={340}
             width="100%"
             viewBox="0 0 520 482"
@@ -116,22 +77,12 @@ const Home: NextPage = () => {
           </div>
         </MainFirstContent>
         <AdvancedStatistics>
-          <ShortenLinkForm onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <input
-                className={
-                  errors.link && getValues.length > 0
-                    ? "input input-with-error"
-                    : "input"
-                }
-                type="text"
-                placeholder="Shorter a link here..."
-                {...register("link", { required: true })}
-              />
-              {errors.link && <p>Please add a link</p>}
-            </div>
-            <button type="submit">Shorten It!</button>
-          </ShortenLinkForm>
+          <ShortenLinkForm
+            setSavedLinks={setSavedLinks}
+            savedLinks={savedLinks}
+          />
+
+          <SavedLinksList savedLinks={savedLinks} />
 
           <h1>Advanced Statistics</h1>
           <p>
@@ -139,7 +90,7 @@ const Home: NextPage = () => {
             statistics dashboard.
           </p>
           <div className="advanced-statistics-list-container">
-            <AdvancedStatisticsList data={advancedStatisticsData} />
+            <AdvancedStatisticsList data={advancedStatistics} />
           </div>
         </AdvancedStatistics>
         <BoostContainer>
@@ -149,39 +100,10 @@ const Home: NextPage = () => {
       </Main>
       <Footer>
         <div className="footer-container">
-          <Logo fontSize={100} height={35} style={{ color: "#fff" }} />
+          <Logo fontSize={135} height={35} color="#FFF" />
           <div>
-            <FooterMenuList data={footerNavLinksData} />
-            <SocialList>
-              <li>
-                <Link href="/">
-                  <a>
-                    <FacebookLogo fontSize={24} />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    <TwitterLogo fontSize={24} />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    <PinterestLogo fontSize={24} />
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>
-                    <InstagramLogo fontSize={24} />
-                  </a>
-                </Link>
-              </li>
-            </SocialList>
+            <FooterMenuList data={footerNavLinks} />
+            <SocialList />
           </div>
         </div>
       </Footer>
@@ -190,3 +112,25 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  let cookies = nookies.get(ctx);
+
+  let SAVED_LINKS: { original: string; short: string }[] = [];
+
+  if (cookies.SAVED_LINKS) {
+    SAVED_LINKS = JSON.parse(cookies.SAVED_LINKS);
+  } else {
+    nookies.set(ctx, "SAVED_LINKS", "[]", {
+      maxAge: 86400 * 31,
+      path: "/",
+    });
+  }
+
+  return {
+    props: {
+      server: false,
+      SAVED_LINKS,
+    },
+  };
+};

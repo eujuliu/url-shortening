@@ -6,7 +6,7 @@ export const ButtonStyled = styled.button`
   border: none;
   padding: 1.5rem 4rem;
   font-weight: 700;
-  color: #fff;
+  color: ${(props) => props.theme.colors.neutral.white};
   margin: 1.5rem 0;
 
   transition: opacity 400ms;

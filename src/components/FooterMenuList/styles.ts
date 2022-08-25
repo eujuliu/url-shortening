@@ -8,7 +8,7 @@ export const FooterMenuListContainer = styled.div`
 
   h1 {
     font-size: 1.5rem;
-    color: #fff;
+    color: ${(props) => props.theme.colors.neutral.white};
     margin: 3rem 0 2rem;
   }
 

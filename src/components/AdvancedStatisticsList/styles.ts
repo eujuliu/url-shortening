@@ -27,7 +27,7 @@ export const AdvancedStatisticsSection = styled.section<AdvancedStatisticsSectio
   max-width: 364px;
   position: relative;
 
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.neutral.white};
   border-radius: 1rem;
   padding: 2rem 3rem 4rem;
 
