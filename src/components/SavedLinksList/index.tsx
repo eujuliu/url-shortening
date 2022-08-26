@@ -35,6 +35,7 @@ const List: NextPage<ListProps> = ({ original_link, short_link }) => {
         </Link>
       </div>
       <button
+        aria-label={buttonText}
         onClick={() => {
           navigator.clipboard.writeText(short_link);
           setButtonText("Copied!");

@@ -57,7 +57,10 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
       <Header>
         <Logo fontSize={135} height={35} />
 
-        <Hamburger onClick={() => setIsNavExpanded(!isNavExpanded)}>
+        <Hamburger
+          aria-label="Open Menu"
+          onClick={() => setIsNavExpanded(!isNavExpanded)}
+        >
           <MenuIcon fontSize={35} />
         </Hamburger>
         <NavigationMenu isHidden={isNavExpanded || windowSize > 860} />
@@ -75,7 +78,7 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
               Build your brand&apos;s recognition and get detailed insights on
               how your links are performing.
             </p>
-            <Button>Get Started</Button>
+            <Button aria-label="Get Started">Get Started</Button>
           </div>
         </MainFirstContent>
         <AdvancedStatistics>
@@ -96,7 +99,7 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
         </AdvancedStatistics>
         <BoostContainer>
           <p className="boost-title">Boost your links today</p>
-          <Button>Get Started</Button>
+          <Button aria-label="Get Started">Get Started</Button>
         </BoostContainer>
       </Main>
       <Footer>
