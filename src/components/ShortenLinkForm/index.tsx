@@ -21,7 +21,6 @@ const ShortenLinkForm: NextPage<ShortenLinkFormProps> = ({
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<InputProps>();
 
@@ -50,11 +49,7 @@ const ShortenLinkForm: NextPage<ShortenLinkFormProps> = ({
     <ShortenLinkFormContainer onSubmit={handleSubmit(onSubmit)}>
       <div>
         <input
-          className={
-            errors.link && getValues.length > 0
-              ? "input input-with-error"
-              : "input"
-          }
+          className={errors.link ? "input input-with-error" : "input"}
           type="text"
           placeholder="Shorter a link here..."
           {...register("link", {

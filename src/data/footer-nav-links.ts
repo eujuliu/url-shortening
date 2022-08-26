@@ -2,26 +2,26 @@ export const footerNavLinks = [
   {
     title: "Features",
     items: [
-      { item: "Link Shortening", link: "https://www.google.com/" },
-      { item: "Branded Links", link: "https://www.google.com/" },
-      { item: "Analytics", link: "https://www.google.com/" },
+      { item: "Link Shortening", link: "/" },
+      { item: "Branded Links", link: "/" },
+      { item: "Analytics", link: "/" },
     ],
   },
   {
     title: "Resources",
     items: [
-      { item: "Blog", link: "https://www.google.com" },
-      { item: "Developers", link: "https://www.google.com" },
-      { item: "Support", link: "https://www.google.com" },
+      { item: "Blog", link: "/" },
+      { item: "Developers", link: "/" },
+      { item: "Support", link: "/" },
     ],
   },
   {
     title: "Company",
     items: [
-      { item: "About", link: "https://www.google.com" },
-      { item: "Our Team", link: "https://www.google.com" },
-      { item: "Careers", link: "https://www.google.com" },
-      { item: "Contact", link: "https://www.google.com" },
+      { item: "About", link: "/" },
+      { item: "Our Team", link: "/" },
+      { item: "Careers", link: "/" },
+      { item: "Contact", link: "/" },
     ],
   },
 ];
