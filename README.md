@@ -4,7 +4,7 @@
   <h1 align="center">URL Shortening</h1>
 
   <p align="center">
-    URL shortening API landing page with Next.js
+    This is a Front-end Mentor project, is a URL shortening make with Next.js and Typescript
     <br />
     <a href="https://url-shortening-iota.vercel.app/">View Demo</a>
     ·
