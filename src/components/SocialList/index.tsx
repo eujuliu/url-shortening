@@ -13,28 +13,28 @@ const SocialList: NextPage = () => {
     <SocialListContainer>
       <li>
         <Link href="/">
-          <a>
+          <a aria-label="Our Facebook account">
             <FacebookLogo fontSize={24} />
           </a>
         </Link>
       </li>
       <li>
         <Link href="/">
-          <a>
+          <a aria-label="Our Twitter account">
             <TwitterLogo fontSize={24} />
           </a>
         </Link>
       </li>
       <li>
         <Link href="/">
-          <a>
+          <a aria-label="Our Pinterest account">
             <PinterestLogo fontSize={24} />
           </a>
         </Link>
       </li>
       <li>
         <Link href="/">
-          <a>
+          <a aria-label="Our Instagram account">
             <InstagramLogo fontSize={24} />
           </a>
         </Link>
