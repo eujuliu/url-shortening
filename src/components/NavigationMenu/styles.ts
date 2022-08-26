@@ -27,7 +27,6 @@ export const NavigationMenuContainer = styled.nav<NavigationMenuProps>`
       list-style-type: none;
       text-align: center;
       font-weight: 700;
-      color: ${(props) => props.theme.colors.neutral.white};
       margin: 1rem;
 
       a {
@@ -48,6 +47,7 @@ export const NavigationMenuContainer = styled.nav<NavigationMenuProps>`
         border-radius: 10rem;
         color: ${(props) => props.theme.colors.neutral.white};
       }
+
       .button-with-cyan-background {
         color: ${(props) => props.theme.colors.neutral.white};
         background-color: ${(props) => props.theme.colors.primary.cyan};
@@ -81,14 +81,12 @@ export const NavigationMenuContainer = styled.nav<NavigationMenuProps>`
       padding: 0;
 
       li {
-        color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
-        width: 100%;
-
         a {
-          color: ${(props) => props.theme.colors.neutral.grayishViolet};
+          color: ${(props) => props.theme.colors.neutral.black};
+          transition: opacity 400ms;
 
           &:hover {
-            color: ${(props) => props.theme.colors.neutral.veryDarkViolet};
+            opacity: 0.5;
           }
         }
 
