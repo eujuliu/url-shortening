@@ -27,7 +27,7 @@ const AdvancedStatisticsList: NextPage<AdvancedStatisticsListProps> = ({
               <div>
                 <Icon fontSize={40} />
               </div>
-              <h1>{title}</h1>
+              <h2>{title}</h2>
               <p>{text}</p>
             </AdvancedStatisticsSection>
             {title === "Brand Recognition" || title === "Detailed Records" ? (

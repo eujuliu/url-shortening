@@ -40,10 +40,11 @@ export const AdvancedStatisticsSection = styled.section<AdvancedStatisticsSectio
     position: relative;
   }
 
-  h1 {
+  h2 {
     font-size: 2.4rem;
     text-align: center;
     margin-bottom: 1.6rem;
+    font-weight: 700;
   }
 
   p {
@@ -58,7 +59,7 @@ export const AdvancedStatisticsSection = styled.section<AdvancedStatisticsSectio
       left: -110px;
     }
 
-    h1,
+    h2,
     p {
       width: 100%;
       text-align: left;

@@ -95,7 +95,7 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
           </div>
         </AdvancedStatistics>
         <BoostContainer>
-          <h1>Boost your links today</h1>
+          <p className="boost-title">Boost your links today</p>
           <Button>Get Started</Button>
         </BoostContainer>
       </Main>

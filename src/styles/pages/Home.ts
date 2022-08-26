@@ -156,16 +156,17 @@ export const BoostContainer = styled.div`
   background: center / 100vw no-repeat url("/bg-boost-mobile.svg"),
     ${(props) => props.theme.colors.primary.darkViolet};
 
-  h1 {
+  .boost-title {
     color: ${(props) => props.theme.colors.neutral.white};
     font-size: 2.5rem;
+    font-weight: 700;
   }
 
   @media screen and (min-width: 860px) {
     background: center / cover no-repeat url("/bg-boost-desktop.svg"),
       ${(props) => props.theme.colors.primary.darkViolet};
 
-    h1 {
+    .boost-title {
       font-size: 4rem;
     }
   }
