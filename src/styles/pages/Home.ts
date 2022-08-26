@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   max-width: 2560px;
+  min-width: 320px;
   margin: auto;
 
   @media screen and (min-width: 2560px) {

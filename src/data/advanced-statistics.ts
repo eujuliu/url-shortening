@@ -1,7 +1,8 @@
+import { FunctionComponent, SVGProps } from "react";
+
 import BrandRecognition from "@/assets/images/icon-brand-recognition.svg";
 import DetailedRecords from "@/assets/images/icon-detailed-records.svg";
 import FullyCustomizable from "@/assets/images/icon-fully-customizable.svg";
-import { FunctionComponent, SVGProps } from "react";
 
 export const advancedStatistics: {
   Icon: FunctionComponent<SVGProps<SVGSVGElement>>;

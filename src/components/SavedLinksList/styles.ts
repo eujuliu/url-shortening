@@ -37,7 +37,6 @@ export const ListContainer = styled.li<ListContainerProps>`
       white-space: nowrap;
       overflow: hidden;
       padding: 1rem 0;
-      max-width: 600px;
     }
 
     a {
@@ -72,6 +71,12 @@ export const ListContainer = styled.li<ListContainerProps>`
       justify-content: space-between;
       flex-grow: 1;
       padding-right: 2rem;
+      max-width: 90%;
+
+      p,
+      a {
+        max-width: 400px;
+      }
 
       a {
         border: none;

@@ -24,8 +24,8 @@ const ShortenLinkForm: NextPage<ShortenLinkFormProps> = ({
     formState: { errors },
   } = useForm<InputProps>();
 
-  const onSubmit: SubmitHandler<InputProps> = async (data) => {
-    await fetch(`https://api.shrtco.de/v2/shorten?url=${data.link}`)
+  const onSubmit: SubmitHandler<InputProps> = (data) => {
+    fetch(`https://api.shrtco.de/v2/shorten?url=${data.link}`)
       .then((response) => response.json())
       .then(({ result }) => {
         setSavedLinks([
