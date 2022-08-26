@@ -63,8 +63,6 @@ Clone the repository in your computer
 
 Install all dependencies with `npm install` or `yarn` and run the project with `npm run dev` or `yarn dev`.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
@@ -78,3 +76,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Make by Julio Martins 👋🏽 Contact me!
 
 [![Linkedin Badge](https://img.shields.io/badge/-@jjuliomarttins-1262BF?style=for-the-badge&labelColor=1262BF&logo=linkedin&logoColor=white&link=https://twitter.com/jjuliomarttins)](https://www.linkedin.com/in/jjuliomarttins/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
