@@ -15,9 +15,6 @@ import ShortenLinkForm from "@/components/ShortenLinkForm";
 import NavigationMenu from "@/components/NavigationMenu";
 import SavedLinksList from "@/components/SavedLinksList";
 
-import { advancedStatistics } from "@/data/advanced-statistics";
-import { footerNavLinks } from "@/data/footer-nav-links";
-
 import {
   AdvancedStatistics,
   BoostContainer,
@@ -94,7 +91,7 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
             statistics dashboard.
           </p>
           <div className="advanced-statistics-list-container">
-            <AdvancedStatisticsList data={advancedStatistics} />
+            <AdvancedStatisticsList />
           </div>
         </AdvancedStatistics>
         <BoostContainer>
@@ -106,7 +103,7 @@ const Home: NextPage<HomeProps> = ({ SAVED_LINKS }) => {
         <div className="footer-container">
           <Logo fontSize={135} height={35} color="#FFF" />
           <div>
-            <FooterMenuList data={footerNavLinks} />
+            <FooterMenuList />
             <SocialList />
           </div>
         </div>

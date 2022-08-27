@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { Dispatch, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { setCookie } from "nookies";
 
@@ -10,8 +10,18 @@ interface InputProps {
 }
 
 interface ShortenLinkFormProps {
-  savedLinks: any;
-  setSavedLinks: Dispatch<any>;
+  savedLinks: {
+    original: string;
+    short: string;
+  }[];
+  setSavedLinks: Dispatch<
+    SetStateAction<
+      {
+        original: string;
+        short: string;
+      }[]
+    >
+  >;
 }
 
 const ShortenLinkForm: NextPage<ShortenLinkFormProps> = ({

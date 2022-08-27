@@ -29,7 +29,7 @@ const List: NextPage<ListProps> = ({ original_link, short_link }) => {
   return (
     <ListContainer textEqualToCopied={buttonText === "Copied!"}>
       <div>
-        <p>{original_link}</p>
+        <p title={original_link}>{original_link}</p>
         <Link href={short_link}>
           <a target="_blank">{short_link}</a>
         </Link>

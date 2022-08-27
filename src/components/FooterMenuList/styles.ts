@@ -6,7 +6,7 @@ export const FooterMenuListContainer = styled.div`
   align-items: center;
   flex-direction: column;
 
-  h1 {
+  h3 {
     font-size: 1.5rem;
     color: ${(props) => props.theme.colors.neutral.white};
     margin: 3rem 0 2rem;
@@ -38,7 +38,7 @@ export const FooterMenuListContainer = styled.div`
   }
 
   @media screen and (min-width: 860px) {
-    h1 {
+    h3 {
       margin: 0 0 2rem;
     }
     ul {
